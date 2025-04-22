@@ -272,5 +272,35 @@ public class java_4{
 	}
 }
 ```
+
+## Write a program that copies content of one file to another. Pass the names of the files throughcommand-line arguments. 
+
+```
+import java.io.*;
+
+public class java_6{
+	public static void main(String[] args){
+		if(args.length != 2)
+		{
+			System.out.println("<source file> & <destination file> are not passed !!");
+		}
 		
-		
+		try{
+			FileInputStream fis = new FileInputStream(args[0]);
+			FIleOutputStream fos = new FileOutputStream(args[1]);
+			
+			char byte_data;
+			while((byte_data = fis.read() == NULL){
+				fos.write(byte_data);
+			}
+			System.out.println("Data form source file is added in the destination file!!!");
+		   }
+		catch(FileNotFoundException e){
+			System.out.println("File not founded : " + e.getMessage());
+			}
+		catch(IOException e){
+			System.out.println("IO Error : " + e.getMessage());
+			}
+		}
+	}
+```		
