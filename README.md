@@ -53,4 +53,76 @@ class practical_1{
 		Complex.multiple(c1,c2);
 	}
 	}
-	```
+```
+
+
+
+## Create a class TwoDim which contains private members as x and y coordinates in package P1. Define the default constructor, a parameterized constructor and override toString() method to display the co- ordinates. Now reuse this class and in package P2 create another class ThreeDim, adding a new dimension as z as its private member.
+```
+package P1;
+import java.util.Scanner;
+import java.io;
+class TwoDim{
+	private int x;
+	private int y;
+	
+	public TwoDim(){
+		this.x = 0;
+		this.y = 0;
+	}
+	
+	public TwoDim(int x,int y){
+		this.x = x;
+		this.y = y;
+	}
+	
+	@Override
+	public String toString(){
+		return "Coordinates x : " + x +" y : " + y ;
+	}
+}
+```
+```
+package P2;
+
+import P1.TwoDim;
+
+class ThreeDim extends TwoDim{
+	private int z;
+	
+	public ThreeDim(){
+		super();
+		this.z = 0;
+	}
+	
+	public ThreeDim(int x ,int y,int z){
+		super(x,y);
+		this.z =z;
+	}
+	
+	@Override
+	public String toString(){
+		return super.toString() + " z : " + z;
+	}
+}
+```
+```
+package P;
+import P1.TwoDim;
+import P2.ThreeDim;
+class practical_2{
+	public static void main(String args []){
+         TwoDim point1 = new TwoDim(5, 10);
+        ThreeDim point2 = new ThreeDim(5, 10, 15);
+        System.out.println("Using TwoDim object:");
+        displayCoordinates(point1);  
+        System.out.println("\nUsing ThreeDim object:");
+        displayCoordinates(point2);  
+    }
+
+
+    public static void displayCoordinates(TwoDim point) {
+        System.out.println(point.toString());
+    }
+}
+```
