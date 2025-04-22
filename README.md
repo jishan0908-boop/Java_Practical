@@ -126,3 +126,151 @@ class practical_2{
     }
 }
 ```
+
+## Define an abstract class Shape in package P1. Inherit two more classes: Rectangle in package P2 and Circle in package P3. Write a program to ask the user for the type of shape and then using the concept of dynamic method dispatch, display the area of the appropriate subclass. Also write appropriate methods to read the data. The main() function should not be in any package.
+
+
+```
+package P2;
+
+class Rectangle{
+	public int length;
+	public int breadth;
+	
+	public Rectangle(){
+		this.length = 0;
+		this.length = 0;
+	}
+	
+	public Rectangle(int length , int breadth){
+		this.length = length;
+		this.breadth = breadth;
+	}
+	
+	public static displayaArea(){
+		return "Area of Rectangle : " + length*breadth ;
+	}
+}
+```
+
+```
+package P3;
+
+class Cricle{
+	public int radius;
+	
+	public Cricle(){
+		this.radius = 0 ;
+	}
+	
+	public Cricle(int radius){
+		this.radius = radius;
+	}
+	
+	public static displayArea(){
+		float area = 3.14 * radius * radius;
+		return "Area of Circle : " + area;
+	}
+}
+```
+```
+package P1;
+
+import P2.Rectangle;
+import P3.Circle;
+
+class Shape{
+	private Rectangle rec;
+	private Circle cr;
+	
+	public Shape(int check , int length , int breadth){
+		if (check == 1){
+			rec = new Rectangle(length,breadth);
+			
+		}
+		 else {
+            System.out.println("Invalid check value for this constructor.");
+        }
+	
+	public Shape(int check , int radius){
+		if (check == 2){
+			cr = new Circle(radius);
+			
+		}
+		 else {
+            System.out.println("Invalid check value for this constructor.");
+        }
+        
+        public void display(){
+        	if (rec != null){
+        		System.out.println(rec.displayArea());
+        	}
+        	if (cr != null){
+        		System.out.println(cr.displayArea());
+        	}
+}
+```
+```
+import java.util.Scanner;
+import P1.Shape;
+class practical_3{
+	public static void main(String args[]){
+	Scanner sc = new Scanner(System.in);
+	System.out.print("Enter 1 for Rectangle else enter 2 for Circle");
+	int check = sc.nextInt();
+	if (check == 1 ){
+		System.out.print("Enter length : ");
+		int len = sc.nextInt();
+		System.out.println();
+		System.out.print("Enter breadth : ");
+		int br = sc.nextInt();
+		System.out.println();
+		Shape sh = new Shape(check , len ,br);
+		sh.display();
+	}
+	if (check == 2){
+		System.out.print("Enter the radius : ");
+		int r = sc.nextInt();
+		System.out.println();
+		Shape sh1 = new Shape(check , r);
+		sh1.display();
+	}
+	else{
+		System.out.println("Invalid Choice");
+	}
+}
+```
+
+## Create an exception subclass UnderAge, which prints “Under Age” along with the age value when an object of UnderAge class is printed in the catch statement. Write a class exceptionDemo in which the method test() throws UnderAge exception if the variable age passed to it as argument is less than 18. Write main() method also to show working of the program.
+
+```
+import java.util*;
+
+public class UnderAge{
+	public static void InvaildAgeExeception(String message){
+		super(message);
+	}
+}
+
+public class Checker{
+	public static void validAge(int age) throws InvaildAgeExeception[
+		if(age < 18) {
+		throw new InvalidAgeExecption("The persons is under age and his age is : " + age);
+	}
+}
+
+public class java_4{
+	public static void main(String args[]){
+		try{
+			int age = 17;
+			validAge(age);
+			System.out.print("You are eligible for vote.");
+		}
+		catch(InvalidAgeExeception e){
+			System.out.println("Caught an Exeception : " + e.getMessage());
+		}
+	}
+}
+```
+		
+		
