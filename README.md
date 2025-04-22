@@ -304,3 +304,30 @@ public class java_6{
 		}
 	}
 ```		
+## Write a program to read a file and display only those lines that have the first two characters as '//' (Use try with resources). 
+
+```
+import java.io.BufferedReader;
+import java.io*;
+import java.util.Scanner;
+
+
+public class java_7{
+	public static void main(String args[]){
+		String filepath;
+		Scanner sc = new Scanner(System.in);
+		filepath = sc.nextLine();
+		try(BufferedReader new = BufferedReader(new FileReader(filepath))){
+			String line;
+			while((line = reader.readLine()) != null){
+				if(line.startsWith("//")){
+					System.out.println(line);
+				}
+			}
+		}
+		catch (IOException e){
+			System.out.printlin("An error occure while reading files :" + e.getMessage());
+		}
+	}
+}
+```
